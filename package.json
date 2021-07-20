@@ -1,5 +1,5 @@
 {
-  "name": "webpack",
+  "name": "webpack_test",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,6 +10,10 @@
   "license": "UNLICENSED",
   "private": true,
   "devDependencies": {
+    "css-loader": "^6.1.0",
+    "html-webpack-plugin": "^5.3.2",
+    "mini-css-extract-plugin": "^2.1.0",
+    "style-loader": "^3.1.0",
     "webpack": "^5.45.1",
     "webpack-cli": "^4.7.2"
   }
