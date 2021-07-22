@@ -4,20 +4,35 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "webpack serve --mode=development",
+    "build": "webpack --mode production",
+    "build:dev": "webpack"
   },
   "author": "Nobuhiko Yuasa",
   "license": "UNLICENSED",
   "private": true,
   "devDependencies": {
+    "@babel/core": "^7.14.8",
+    "@babel/preset-env": "^7.14.8",
+    "@babel/preset-react": "^7.14.5",
+    "babel-loader": "^8.2.2",
     "clean-webpack-plugin": "^4.0.0-alpha.0",
     "css-loader": "^6.1.0",
     "html-loader": "^2.1.2",
     "html-webpack-plugin": "^5.3.2",
+    "image-webpack-loader": "^7.0.1",
     "mini-css-extract-plugin": "^2.1.0",
+    "node-sass": "^6.0.1",
     "pug-html-loader": "^1.1.5",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "sass-loader": "^12.1.0",
     "style-loader": "^3.1.0",
+    "vue": "^2.6.14",
+    "vue-loader": "^15.9.6",
+    "vue-template-compiler": "^2.6.14",
     "webpack": "^5.45.1",
-    "webpack-cli": "^4.7.2"
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^3.11.2"
   }
 }
