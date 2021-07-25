@@ -4,14 +4,14 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
-  mode: 'development',
+  mode: 'production',
   devtool: 'eval-source-map',
   entry: {
     main: './src/javascripts/main.js',
   },
   output: {
     path: path.resolve(__dirname, './dist'),
-    filename: 'javascripts/main.js',
+    filename: 'javascripts/[name]-[contenthash].js',
     publicPath: '/',
   },
   module: {
@@ -44,18 +44,32 @@ module.exports = {
         test: /\.(css|sass|scss)$/,
         use: [
           {
-          loader: MiniCssExtractPlugin.loader,
+            loader: MiniCssExtractPlugin.loader,
           },
           {
             loader: 'css-loader',
-            options: {
-              sourceMap: true,
-            },
+            options: { sourceMap: true },
           },
           {
             loader: 'sass-loader',
-          }
+          },
         ],
+      },
+      {
+        test: /\.(png|jpg|jpeg)/,
+        type: 'asset/resource',
+        generator: {
+          filename: 'images/[name]-[contenthash][ext]',
+        },
+        use: [{
+          loader: 'image-webpack-loader',
+          options: {
+            mozjpeg: {
+              progressive: true,
+              quality: 65,
+            },
+          },
+        }, ],
       },
       {
         test: /\.pug/,
@@ -71,29 +85,11 @@ module.exports = {
           },
         ],
       },
-      {
-        test: /\.(png|jpg|jpeg)/,
-        type: 'asset/resource',
-        generator: {
-          filename: 'images/[name][ext]',
-        },
-        use: [
-          {
-            loader: 'image-webpack-loader',
-            options: {
-              mozjpeg: {
-                progressive: true,
-                quality: 65,
-              },
-            },
-          },
-        ],
-      },
     ],
   },
   plugins: [
      new MiniCssExtractPlugin({
-      filename: './stylesheets/main.css',
+      filename: './stylesheets/[name]-[contenthash].css',
     }),
     new HtmlWebpackPlugin({
       template: './src/templates/index.pug',
